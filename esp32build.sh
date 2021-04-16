@@ -7,7 +7,7 @@ file=$2
 #工程目录
 prjDir="/mnt/c/Users/ABC/Desktop/ESP32C3_MINI1/Code/esp-aws-iot/examples/subscribe_publish"
 #烧录文件夹
-desDir="/mnt/c/Users/ABC/Desktop/ESP32C3_OUT"
+desDir="/mnt/c/Users/ABC/Desktop/ESP32C3_MINI1/out"
 #Windows下烧录文件夹
 winDir="C:/Users/ABC/Desktop/ESP32C3_MINI1/out"
 
@@ -17,10 +17,10 @@ buildFlag="-b 921600 --before default_reset --after hard_reset --chip esp32c3  w
 #判断参数
 if [ $# != 2 ]
 then
-	echo 'Usage: ./esp32build.sh [COMx] [xxx.bin]'
+	echo "Usage: ./esp32build.sh [COMx] [Prj_Name]"
 	exit
 else
-	echo '----------------------------------------'
+	echo "----------------------------------------"
 fi
 
 #进入工程目录
@@ -30,10 +30,10 @@ cd $prjDir
 echo "------------- 1. Begin to create Build Folder  --------------"
 if [ ! -d $desDir ]
 then
-	echo '$desDir is create!'
+	echo "$desDir is create!"
 	mkdir -p $desDir
 else
-	echo '$desDir is exist!'
+	echo "$desDir is exist!"
 fi
 echo -e "------------- 1. Ending to create Build Folder --------------\n"
 
@@ -41,10 +41,10 @@ echo -e "------------- 1. Ending to create Build Folder --------------\n"
 echo "------------- 2. Begin to Dect Bin file  --------------"
 if [ ! -f $desDir/$file ]
 then
-	echo '$file is not here!'
+	echo "$file is not here!"
 	cp build/$file $desDir
 else
-	echo '$file is exist!'
+	echo "$file is exist!"
 	rm -rf $file
 	cp build/$file $desDir
 fi
